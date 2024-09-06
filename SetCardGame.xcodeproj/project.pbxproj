@@ -15,6 +15,7 @@
 		995D9F422C8B331D00241E49 /* SetCardGameUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995D9F412C8B331D00241E49 /* SetCardGameUITests.swift */; };
 		995D9F442C8B331D00241E49 /* SetCardGameUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995D9F432C8B331D00241E49 /* SetCardGameUITestsLaunchTests.swift */; };
 		995D9F512C8B348D00241E49 /* SetCardGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995D9F502C8B348D00241E49 /* SetCardGame.swift */; };
+		995D9F532C8B74A400241E49 /* SetCardGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995D9F522C8B74A400241E49 /* SetCardGameViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		995D9F412C8B331D00241E49 /* SetCardGameUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetCardGameUITests.swift; sourceTree = "<group>"; };
 		995D9F432C8B331D00241E49 /* SetCardGameUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetCardGameUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		995D9F502C8B348D00241E49 /* SetCardGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetCardGame.swift; sourceTree = "<group>"; };
+		995D9F522C8B74A400241E49 /* SetCardGameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetCardGameViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 				995D9F502C8B348D00241E49 /* SetCardGame.swift */,
 				995D9F2A2C8B331C00241E49 /* Assets.xcassets */,
 				995D9F2C2C8B331C00241E49 /* Preview Content */,
+				995D9F522C8B74A400241E49 /* SetCardGameViewModel.swift */,
 			);
 			path = SetCardGame;
 			sourceTree = "<group>";
@@ -261,6 +264,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				995D9F292C8B331B00241E49 /* ContentView.swift in Sources */,
+				995D9F532C8B74A400241E49 /* SetCardGameViewModel.swift in Sources */,
 				995D9F512C8B348D00241E49 /* SetCardGame.swift in Sources */,
 				995D9F272C8B331B00241E49 /* SetCardGameApp.swift in Sources */,
 			);

@@ -11,9 +11,11 @@ struct SetCardGame {
     private var deck: [Card]
     private(set) var selectedCards: [Card] = []
     private(set) var cardsOnDisplay: [Card]
-    private var isMatch = false
+    private(set) var isMatch = false
     
     mutating func drawThreeMoreCards() {
+        if deck.count < 3 { return }
+        
         cardsOnDisplay.append(contentsOf: deck.prefix(3))
         deck.removeFirst(3)
     }

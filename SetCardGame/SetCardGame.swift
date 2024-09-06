@@ -8,7 +8,7 @@
 import Foundation
 
 struct SetCardGame {
-    private var deck: [Card]
+    private(set) var deck: [Card]
     private(set) var selectedCards: [Card] = []
     private(set) var cardsOnDisplay: [Card]
     private(set) var isMatch = false

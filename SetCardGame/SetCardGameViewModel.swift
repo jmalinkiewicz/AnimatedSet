@@ -20,6 +20,10 @@ import SwiftUI
         return model.isMatch
     }
     
+    var deck: [SetCardGame.Card] {
+        return model.deck
+    }
+    
     func select(_ card: SetCardGame.Card) {
         model.select(card)
     }

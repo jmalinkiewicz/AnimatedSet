@@ -13,7 +13,8 @@ struct SetCardGameApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            SetCardGameView()
+                .environment(game)
         }
     }
 }

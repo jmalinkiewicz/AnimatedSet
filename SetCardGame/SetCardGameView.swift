@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  SetCardGameView.swift
 //  SetCardGame
 //
 //  Created by Jakub Malinkiewicz on 06/09/2024.
@@ -7,7 +7,9 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct SetCardGameView: View {
+    @Environment(SetCardGameViewModel.self) private var viewModel
+    
     var body: some View {
         VStack {
             Image(systemName: "globe")
@@ -20,5 +22,6 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    SetCardGameView()
+        .environment(SetCardGameViewModel())
 }

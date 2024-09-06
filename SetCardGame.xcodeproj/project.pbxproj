@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		995D9F272C8B331B00241E49 /* SetCardGameApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995D9F262C8B331B00241E49 /* SetCardGameApp.swift */; };
-		995D9F292C8B331B00241E49 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995D9F282C8B331B00241E49 /* ContentView.swift */; };
+		995D9F292C8B331B00241E49 /* SetCardGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995D9F282C8B331B00241E49 /* SetCardGameView.swift */; };
 		995D9F2B2C8B331C00241E49 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 995D9F2A2C8B331C00241E49 /* Assets.xcassets */; };
 		995D9F2E2C8B331C00241E49 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 995D9F2D2C8B331C00241E49 /* Preview Assets.xcassets */; };
 		995D9F382C8B331D00241E49 /* SetCardGameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995D9F372C8B331D00241E49 /* SetCardGameTests.swift */; };
@@ -38,7 +38,7 @@
 /* Begin PBXFileReference section */
 		995D9F232C8B331B00241E49 /* SetCardGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SetCardGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		995D9F262C8B331B00241E49 /* SetCardGameApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetCardGameApp.swift; sourceTree = "<group>"; };
-		995D9F282C8B331B00241E49 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		995D9F282C8B331B00241E49 /* SetCardGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetCardGameView.swift; sourceTree = "<group>"; };
 		995D9F2A2C8B331C00241E49 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		995D9F2D2C8B331C00241E49 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		995D9F332C8B331D00241E49 /* SetCardGameTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SetCardGameTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -99,7 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				995D9F262C8B331B00241E49 /* SetCardGameApp.swift */,
-				995D9F282C8B331B00241E49 /* ContentView.swift */,
+				995D9F282C8B331B00241E49 /* SetCardGameView.swift */,
 				995D9F502C8B348D00241E49 /* SetCardGame.swift */,
 				995D9F2A2C8B331C00241E49 /* Assets.xcassets */,
 				995D9F2C2C8B331C00241E49 /* Preview Content */,
@@ -263,7 +263,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				995D9F292C8B331B00241E49 /* ContentView.swift in Sources */,
+				995D9F292C8B331B00241E49 /* SetCardGameView.swift in Sources */,
 				995D9F532C8B74A400241E49 /* SetCardGameViewModel.swift in Sources */,
 				995D9F512C8B348D00241E49 /* SetCardGame.swift in Sources */,
 				995D9F272C8B331B00241E49 /* SetCardGameApp.swift in Sources */,

@@ -14,6 +14,7 @@
 		995D9F382C8B331D00241E49 /* SetCardGameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995D9F372C8B331D00241E49 /* SetCardGameTests.swift */; };
 		995D9F422C8B331D00241E49 /* SetCardGameUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995D9F412C8B331D00241E49 /* SetCardGameUITests.swift */; };
 		995D9F442C8B331D00241E49 /* SetCardGameUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995D9F432C8B331D00241E49 /* SetCardGameUITestsLaunchTests.swift */; };
+		995D9F512C8B348D00241E49 /* SetCardGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995D9F502C8B348D00241E49 /* SetCardGame.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		995D9F3D2C8B331D00241E49 /* SetCardGameUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SetCardGameUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		995D9F412C8B331D00241E49 /* SetCardGameUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetCardGameUITests.swift; sourceTree = "<group>"; };
 		995D9F432C8B331D00241E49 /* SetCardGameUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetCardGameUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		995D9F502C8B348D00241E49 /* SetCardGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetCardGame.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 			children = (
 				995D9F262C8B331B00241E49 /* SetCardGameApp.swift */,
 				995D9F282C8B331B00241E49 /* ContentView.swift */,
+				995D9F502C8B348D00241E49 /* SetCardGame.swift */,
 				995D9F2A2C8B331C00241E49 /* Assets.xcassets */,
 				995D9F2C2C8B331C00241E49 /* Preview Content */,
 			);
@@ -258,6 +261,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				995D9F292C8B331B00241E49 /* ContentView.swift in Sources */,
+				995D9F512C8B348D00241E49 /* SetCardGame.swift in Sources */,
 				995D9F272C8B331B00241E49 /* SetCardGameApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

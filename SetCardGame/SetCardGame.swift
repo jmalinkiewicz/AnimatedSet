@@ -64,7 +64,9 @@ struct SetCardGame {
                allSameOrAllDifferent(cardOne.numberOfShapes, cardTwo.numberOfShapes, cardThree.numberOfShapes)
     }
     
-    struct Card: Equatable {
+    struct Card: Equatable, Identifiable {
+        var id: UUID
+        
         let shape: Shape
         let color: Color
         let shade: Shade
@@ -97,7 +99,7 @@ struct SetCardGame {
                 for color in Card.Color.allCases {
                     for shade in Card.Shade.allCases {
                         for numberOfShapes in Card.NumberOfShapes.allCases {
-                            let card = Card(shape: shape, color: color, shade: shade, numberOfShapes: numberOfShapes)
+                            let card = Card(id: UUID(), shape: shape, color: color, shade: shade, numberOfShapes: numberOfShapes)
                             deck.append(card)
                         }
                     }

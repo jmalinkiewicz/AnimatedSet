@@ -11,39 +11,28 @@ struct SetCardGameView: View {
     @Environment(SetCardGameViewModel.self) private var viewModel
     
     var body: some View {
-        ScrollView {
-            LazyVGrid(columns: [GridItem(.adaptive(minimum: 80))], content: {
-                ForEach(viewModel.cardsOnDisplay.indices, id: \.self) { index in
-                    let card  = viewModel.cardsOnDisplay[index]
-                    let isSelected = viewModel.selectedCards.contains(card)
-                    
-                    CardView(card)
-                        .onTapGesture {
-                            viewModel.select(card)
-                        }
-                        .overlay(content: {
-                            isSelected ? RoundedRectangle(cornerRadius: 14).foregroundStyle(.yellow).opacity(0.15) : nil
-                        })
-                        .scaleEffect(isSelected ? 0.9 : 1)
-                        .background(isSelected && viewModel.selectedCards.count == 3 ? RoundedRectangle(cornerRadius: 8)
-                            .foregroundStyle(viewModel.isMatch ? .green : .red): nil)
-                        .animation(.easeIn(duration: 0.1), value: isSelected)
+        AspectVGrid(viewModel.cardsOnDisplay, aspectRatio: 2/3) { card in
+            CardView(card, viewModel: viewModel)
+                .padding(2)
+                .onTapGesture {
+                    viewModel.select(card)
                 }
-            })
-            .animation(.easeIn(duration: 0.2), value: viewModel.cardsOnDisplay.count)
-            .padding()
         }
-        Button("Draw 3 More Cards", action: {
+        .padding()
+        Button("Three More Cards") {
             viewModel.drawThreeMoreCards()
-        })
+        }
         .disabled(viewModel.deck.count < 3)
     }
 }
 
 struct CardView: View {
-    let card: SetCardGame.Card
-
+    private var viewModel: SetCardGameViewModel
+    private let card: SetCardGame.Card
+    
     var body: some View {
+        let isSelected = viewModel.selectedCards.contains(card)
+        
         ZStack {
             RoundedRectangle(cornerRadius: 14)
                 .foregroundColor(.white)
@@ -51,11 +40,18 @@ struct CardView: View {
             CardContent(card)
                 .padding()
         }
-        .aspectRatio(2/3, contentMode: .fit)
+        .overlay(content: {
+            isSelected ? RoundedRectangle(cornerRadius: 14).foregroundStyle(.yellow).opacity(0.15) : nil
+        })
+        .scaleEffect(isSelected ? 0.9 : 1)
+        .background(isSelected && viewModel.selectedCards.count == 3 ? RoundedRectangle(cornerRadius: 8)
+            .foregroundStyle(viewModel.isMatch ? .green : .red): nil)
+        .animation(.easeIn(duration: 0.1), value: isSelected)
     }
     
-    init(_ card: SetCardGame.Card) {
+    init(_ card: SetCardGame.Card, viewModel: SetCardGameViewModel) {
         self.card = card
+        self.viewModel = viewModel
     }
 }
 
@@ -67,9 +63,9 @@ struct CardContent: View {
         case .oval:
             return AnyView(ZStack {
                 RoundedRectangle(cornerRadius: 10)
-                   .strokeBorder(lineWidth: 2)
-                   .aspectRatio(3/1, contentMode: .fit)
-                   .shapePainter(color: card.color, shade: .solid)
+                    .strokeBorder(lineWidth: 2)
+                    .aspectRatio(3/1, contentMode: .fit)
+                    .shapePainter(color: card.color, shade: .solid)
                 RoundedRectangle(cornerRadius: 10)
                     .aspectRatio(3/1, contentMode: .fit)
                     .padding(1)
@@ -91,9 +87,9 @@ struct CardContent: View {
         case .squiggle:
             return AnyView(ZStack {
                 Rectangle()
-                   .strokeBorder(lineWidth: 2)
-                   .aspectRatio(3/1, contentMode: .fit)
-                   .shapePainter(color: card.color, shade: .solid)
+                    .strokeBorder(lineWidth: 2)
+                    .aspectRatio(3/1, contentMode: .fit)
+                    .shapePainter(color: card.color, shade: .solid)
                 Rectangle()
                     .aspectRatio(3/1, contentMode: .fit)
                     .padding(1)

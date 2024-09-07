@@ -21,6 +21,9 @@ struct SetCardGameView: View {
                         .onTapGesture {
                             viewModel.select(card)
                         }
+                        .overlay(content: {
+                            isSelected ? RoundedRectangle(cornerRadius: 14).foregroundStyle(.yellow).opacity(0.15) : nil
+                        })
                         .scaleEffect(isSelected ? 0.9 : 1)
                         .background(isSelected && viewModel.selectedCards.count == 3 ? RoundedRectangle(cornerRadius: 8)
                             .foregroundStyle(viewModel.isMatch ? .green : .red): nil)

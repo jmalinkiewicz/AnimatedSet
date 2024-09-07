@@ -49,14 +49,14 @@ struct SetCardGame {
         
         return allSameOrAllDifferent(cardOne.shape, cardTwo.shape, cardThree.shape) &&
                allSameOrAllDifferent(cardOne.color, cardTwo.color, cardThree.color) &&
-               allSameOrAllDifferent(cardOne.shading, cardTwo.shading, cardThree.shading) &&
+               allSameOrAllDifferent(cardOne.shade, cardTwo.shade, cardThree.shade) &&
                allSameOrAllDifferent(cardOne.numberOfShapes, cardTwo.numberOfShapes, cardThree.numberOfShapes)
     }
     
     struct Card: Equatable {
         let shape: Shape
         let color: Color
-        let shading: Shade
+        let shade: Shade
         let numberOfShapes: NumberOfShapes
         
         enum Shape: CaseIterable {
@@ -65,6 +65,7 @@ struct SetCardGame {
         
         enum Color: CaseIterable {
             case red, green, purple
+            
         }
         
         enum Shade: CaseIterable {
@@ -85,7 +86,7 @@ struct SetCardGame {
                 for color in Card.Color.allCases {
                     for shade in Card.Shade.allCases {
                         for numberOfShapes in Card.NumberOfShapes.allCases {
-                            let card = Card(shape: shape, color: color, shading: shade, numberOfShapes: numberOfShapes)
+                            let card = Card(shape: shape, color: color, shade: shade, numberOfShapes: numberOfShapes)
                             deck.append(card)
                         }
                     }

@@ -12,14 +12,16 @@ struct SetCardGameView: View {
     
     var body: some View {
         ScrollView {
-            LazyVGrid(columns: [GridItem(.adaptive(minimum: 60))], content: {
+            LazyVGrid(columns: [GridItem(.adaptive(minimum: 80))], content: {
                 ForEach(viewModel.cardsOnDisplay.indices, id: \.self) { index in
-                    CardView(card: viewModel.cardsOnDisplay[index])
+                    let card  = viewModel.cardsOnDisplay[index]
+                    let content = viewModel.cardContentFactory(card)
                     
+                    CardView(card: card, content: content as! AnyView)
                 }
             })
+            .padding()
         }
-        .padding()
         Button("Draw 3 More Cards", action: {
             viewModel.drawThreeMoreCards()
         })
@@ -29,9 +31,17 @@ struct SetCardGameView: View {
 
 struct CardView: View {
     let card: SetCardGame.Card
+    let content: AnyView
     
     var body: some View {
-        Text("\(card.shape)")
+        ZStack {
+            RoundedRectangle(cornerRadius: 14)
+                .foregroundColor(.white)
+                .shadow(radius: 2)
+            content
+                .padding()
+        }
+        .aspectRatio(2/3, contentMode: .fit)
     }
 }
 

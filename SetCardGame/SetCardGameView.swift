@@ -28,6 +28,7 @@ struct SetCardGameView: View {
                         .animation(.easeIn(duration: 0.1), value: isSelected)
                 }
             })
+            .animation(.easeIn(duration: 0.2), value: viewModel.cardsOnDisplay.count)
             .padding()
         }
         Button("Draw 3 More Cards", action: {

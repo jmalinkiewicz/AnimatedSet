@@ -21,25 +21,36 @@ struct SetCardGame {
     }
     
     mutating func select(_ card: Card) {
-        if(isMatch) {
-            isMatch = false
-            cardsOnDisplay.removeAll(where: { selectedCards.contains($0)})
-            drawThreeMoreCards()
+        if (selectedCards.count == 3 && !isMatch) {
             selectedCards.removeAll()
         }
         
-        if selectedCards.contains(card) && !isMatch {
+        if (isMatch) {
+            isMatch = false
+            let newCards = deck.prefix(3)
+            deck.removeFirst(3)
+            
+            for i in 0..<3 {
+                let indexToReplace = cardsOnDisplay.firstIndex(of: selectedCards[i])
+                cardsOnDisplay[indexToReplace ?? 0] = newCards[i]
+            }
+            selectedCards.removeAll()
+        }
+        
+        if selectedCards.count < 3 && !selectedCards.contains(card) {
+            selectedCards.append(card)
+            
+            if selectedCards.count == 3 {
+                isMatch = checkForSet(selectedCards[0], selectedCards[1], selectedCards[2])
+            }
+            
+            return
+        }
+        if selectedCards.count < 3 && selectedCards.contains(card) {
             selectedCards.removeAll(where: { $0 == card })
             return
         }
         
-        if cardsOnDisplay.count < 3 {
-            selectedCards.append(card)
-            return
-        } else {
-            isMatch = checkForSet(selectedCards[0], selectedCards[1], selectedCards[3])
-            
-        }
     }
     
     func checkForSet(_ cardOne: Card, _ cardTwo: Card, _ cardThree: Card) -> Bool {

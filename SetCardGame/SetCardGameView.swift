@@ -16,8 +16,16 @@ struct SetCardGameView: View {
                 ForEach(viewModel.cardsOnDisplay.indices, id: \.self) { index in
                     let card  = viewModel.cardsOnDisplay[index]
                     let content = viewModel.cardContentFactory(card)
+                    let isSelected = viewModel.selectedCards.contains(card)
                     
                     CardView(card: card, content: content as! AnyView)
+                        .onTapGesture {
+                            viewModel.select(card)
+                        }
+                        .scaleEffect(isSelected ? 0.9 : 1)
+                        .background(isSelected && viewModel.selectedCards.count == 3 ? RoundedRectangle(cornerRadius: 8)
+                            .foregroundStyle(viewModel.isMatch ? .green : .red): nil)
+                        .animation(.easeIn(duration: 0.1), value: isSelected)
                 }
             })
             .padding()

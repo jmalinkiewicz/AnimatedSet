@@ -27,11 +27,14 @@ struct AspectVGrid<Item: Identifiable, ItemView: View>: View {
             )
             ScrollView {
                 LazyVGrid(columns: [GridItem(.adaptive(minimum: max(gridItemSize, 70)), spacing: 0)], spacing: 0) {
-                    ForEach(items) { item in
+                    ForEach(items.indices, id: \.self) { index in
+                        let item = items[index]
+                        
                         content(item)
                             .aspectRatio(aspectRatio, contentMode: .fit)
                     }
                 }
+                .animation(.easeIn(duration: 2), value: items.count)
             }
         }
     }

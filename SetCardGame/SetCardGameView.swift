@@ -19,10 +19,17 @@ struct SetCardGameView: View {
                 }
         }
         .padding()
-        Button("Three More Cards") {
-            viewModel.drawThreeMoreCards()
+        HStack {
+            Button("Three More Cards") {
+                viewModel.drawThreeMoreCards()
+            }
+            .disabled(viewModel.deck.count < 3)
+            Spacer()
+            Button("New Game") {
+                viewModel.newGame()
+            }
         }
-        .disabled(viewModel.deck.count < 3)
+        .padding(.horizontal, 40)
     }
 }
 

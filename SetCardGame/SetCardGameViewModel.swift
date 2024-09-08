@@ -28,6 +28,10 @@ import SwiftUI
         model.select(card)
     }
     
+    func newGame() {
+        model.newGame()
+    }
+    
     func drawThreeMoreCards() {
         model.drawThreeMoreCards()
     }

@@ -27,12 +27,16 @@ struct SetCardGame {
         
         if (isMatch) {
             isMatch = false
-            let newCards = deck.prefix(3)
-            deck.removeFirst(3)
             
             for i in 0..<3 {
-                let indexToReplace = cardsOnDisplay.firstIndex(of: selectedCards[i])
-                cardsOnDisplay[indexToReplace ?? 0] = newCards[i]
+                let matchingCardIndex = cardsOnDisplay.firstIndex(of: selectedCards[i])
+                
+                if deck.count >= 3 {
+                    cardsOnDisplay[matchingCardIndex ?? 0] = deck[i]
+                    deck.removeFirst()
+                } else {
+                    cardsOnDisplay.remove(at: matchingCardIndex ?? 0)
+                }
             }
             selectedCards.removeAll()
         }

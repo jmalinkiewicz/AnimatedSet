@@ -17,6 +17,7 @@
 		995D9F512C8B348D00241E49 /* SetCardGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995D9F502C8B348D00241E49 /* SetCardGame.swift */; };
 		995D9F532C8B74A400241E49 /* SetCardGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995D9F522C8B74A400241E49 /* SetCardGameViewModel.swift */; };
 		995D9F552C8CA2C500241E49 /* AspectVGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995D9F542C8CA2C500241E49 /* AspectVGrid.swift */; };
+		996874E72C8E1D3000C1DC08 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996874E62C8E1D3000C1DC08 /* CardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,7 @@
 		995D9F502C8B348D00241E49 /* SetCardGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetCardGame.swift; sourceTree = "<group>"; };
 		995D9F522C8B74A400241E49 /* SetCardGameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetCardGameViewModel.swift; sourceTree = "<group>"; };
 		995D9F542C8CA2C500241E49 /* AspectVGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AspectVGrid.swift; sourceTree = "<group>"; };
+		996874E62C8E1D3000C1DC08 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 				995D9F262C8B331B00241E49 /* SetCardGameApp.swift */,
 				995D9F542C8CA2C500241E49 /* AspectVGrid.swift */,
 				995D9F282C8B331B00241E49 /* SetCardGameView.swift */,
+				996874E62C8E1D3000C1DC08 /* CardView.swift */,
 				995D9F502C8B348D00241E49 /* SetCardGame.swift */,
 				995D9F2A2C8B331C00241E49 /* Assets.xcassets */,
 				995D9F2C2C8B331C00241E49 /* Preview Content */,
@@ -270,6 +273,7 @@
 				995D9F532C8B74A400241E49 /* SetCardGameViewModel.swift in Sources */,
 				995D9F512C8B348D00241E49 /* SetCardGame.swift in Sources */,
 				995D9F552C8CA2C500241E49 /* AspectVGrid.swift in Sources */,
+				996874E72C8E1D3000C1DC08 /* CardView.swift in Sources */,
 				995D9F272C8B331B00241E49 /* SetCardGameApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -80,13 +80,11 @@ struct CardContent: View {
             })
         case .diamond:
             return AnyView(ZStack {
-                Rectangle()
-                    .rotation(.degrees(45), anchor: .center)
+                Diamond()
                     .strokeBorder(lineWidth: 2)
                     .aspectRatio(1, contentMode: .fit)
                     .shapePainter(color: card.color, shade: .solid)
-                Rectangle()
-                    .rotation(.degrees(45), anchor: .center)
+                Diamond()
                     .aspectRatio(1, contentMode: .fit)
                     .padding(1)
                     .shapePainter(color: card.color, shade: card.shade)
@@ -116,6 +114,43 @@ struct CardContent: View {
     init(_ card: SetCardGame.Card) {
         self.card = card
     }
+}
+
+struct Diamond: Shape, InsettableShape {
+    var insetAmount: CGFloat = 0
+    
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        
+        // Calculate the center of the rectangle
+        let center = CGPoint(x: rect.midX, y: rect.midY)
+        
+        // Define the points for the diamond (a 45-degree rotated square)
+        let top = CGPoint(x: center.x, y: rect.minY)
+        let right = CGPoint(x: rect.maxX, y: center.y)
+        let bottom = CGPoint(x: center.x, y: rect.maxY)
+        let left = CGPoint(x: rect.minX, y: center.y)
+        
+        // Move to the top point
+        path.move(to: top)
+        
+        // Draw lines to form the diamond
+        path.addLine(to: right)
+        path.addLine(to: bottom)
+        path.addLine(to: left)
+        path.addLine(to: top)
+        
+        // Close the path to complete the shape
+        path.closeSubpath()
+        
+        return path
+    }
+    
+    func inset(by amount: CGFloat) -> some InsettableShape {
+            var diamond = self
+            diamond.insetAmount += amount
+            return diamond
+        }
 }
 
 struct ShapePainter: ViewModifier {

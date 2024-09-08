@@ -16,18 +16,18 @@ struct SetCardGame {
     mutating func drawThreeMoreCards() {
         if deck.count < 3 { return }
         
+        if (isMatch) {
+            respondToMatch()
+            return;
+        }
+        
         cardsOnDisplay.append(contentsOf: deck.prefix(3))
         deck.removeFirst(3)
     }
     
-    mutating func select(_ card: Card) {
-        if (selectedCards.count == 3 && !isMatch) {
-            selectedCards.removeAll()
-        }
+    mutating func respondToMatch() {
+        isMatch = false
         
-        if (isMatch) {
-            isMatch = false
-            
             for i in 0..<3 {
                 let matchingCardIndex = cardsOnDisplay.firstIndex(of: selectedCards[i])
                 
@@ -39,6 +39,15 @@ struct SetCardGame {
                 }
             }
             selectedCards.removeAll()
+    }
+    
+    mutating func select(_ card: Card) {
+        if (selectedCards.count == 3 && !isMatch) {
+            selectedCards.removeAll()
+        }
+        
+        if (isMatch) {
+            respondToMatch()
         }
         
         if selectedCards.count < 3 && !selectedCards.contains(card) {

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		995A9DB32C9A1305005FD03D /* Diamond.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995A9DB22C9A1305005FD03D /* Diamond.swift */; };
 		995D9F272C8B331B00241E49 /* SetCardGameApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995D9F262C8B331B00241E49 /* SetCardGameApp.swift */; };
 		995D9F292C8B331B00241E49 /* SetCardGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995D9F282C8B331B00241E49 /* SetCardGameView.swift */; };
 		995D9F2B2C8B331C00241E49 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 995D9F2A2C8B331C00241E49 /* Assets.xcassets */; };
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		995A9DB22C9A1305005FD03D /* Diamond.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diamond.swift; sourceTree = "<group>"; };
 		995D9F232C8B331B00241E49 /* SetCardGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SetCardGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		995D9F262C8B331B00241E49 /* SetCardGameApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetCardGameApp.swift; sourceTree = "<group>"; };
 		995D9F282C8B331B00241E49 /* SetCardGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetCardGameView.swift; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 				995D9F262C8B331B00241E49 /* SetCardGameApp.swift */,
 				995D9F542C8CA2C500241E49 /* AspectVGrid.swift */,
 				995D9F282C8B331B00241E49 /* SetCardGameView.swift */,
+				995A9DB22C9A1305005FD03D /* Diamond.swift */,
 				996874E62C8E1D3000C1DC08 /* CardView.swift */,
 				995D9F502C8B348D00241E49 /* SetCardGame.swift */,
 				995D9F2A2C8B331C00241E49 /* Assets.xcassets */,
@@ -272,6 +275,7 @@
 				995D9F292C8B331B00241E49 /* SetCardGameView.swift in Sources */,
 				995D9F532C8B74A400241E49 /* SetCardGameViewModel.swift in Sources */,
 				995D9F512C8B348D00241E49 /* SetCardGame.swift in Sources */,
+				995A9DB32C9A1305005FD03D /* Diamond.swift in Sources */,
 				995D9F552C8CA2C500241E49 /* AspectVGrid.swift in Sources */,
 				996874E72C8E1D3000C1DC08 /* CardView.swift in Sources */,
 				995D9F272C8B331B00241E49 /* SetCardGameApp.swift in Sources */,

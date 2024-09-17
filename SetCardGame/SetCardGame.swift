@@ -68,7 +68,6 @@ struct SetCardGame {
     
     mutating func newGame() {
         self = SetCardGame()
-        
     }
     
     func checkForSet(_ cardOne: Card, _ cardTwo: Card, _ cardThree: Card) -> Bool {

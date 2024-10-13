@@ -13,6 +13,7 @@ struct SetCardGameView: View {
     var body: some View {
         AspectVGrid(viewModel.cardsOnDisplay, aspectRatio: 2/3) { card in
             CardView(card, viewModel: viewModel)
+                .shadow(radius: 2)
                 .padding(2)
                 .onTapGesture {
                     viewModel.select(card)
@@ -20,16 +21,32 @@ struct SetCardGameView: View {
         }
         .padding()
         HStack {
-            Button("Three More Cards") {
-                viewModel.drawThreeMoreCards()
+            ZStack {
+                ForEach(viewModel.discardedCards, content: { card in
+                    CardView(card, viewModel: viewModel)
+                })
             }
-            .disabled(viewModel.deck.count < 3)
+            .frame(width: 100 * 2/3, height: 100)
+            .rotationEffect(.degrees(9))
+            .shadow(radius: 2)
             Spacer()
             Button("New Game") {
                 viewModel.newGame()
             }
+            Spacer()
+            ZStack {
+                ForEach(viewModel.deck, content: { card in
+                    CardView(card, viewModel: viewModel)
+                })
+            }
+            .onTapGesture {
+                viewModel.drawThreeMoreCards()
+            }
+            .frame(width: 100 * 2/3, height: 100)
+            .rotationEffect(.degrees(-9))
+            .shadow(radius: 2)
         }
-        .padding(.horizontal, 40)
+        .padding(.horizontal, 20)
     }
 }
 

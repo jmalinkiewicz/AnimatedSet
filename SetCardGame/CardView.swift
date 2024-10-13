@@ -17,7 +17,6 @@ struct CardView: View {
         ZStack {
             RoundedRectangle(cornerRadius: 14)
                 .foregroundColor(.white)
-                .shadow(radius: 2)
             if card.isFaceUp {
                 CardContent(card)
                     .padding()

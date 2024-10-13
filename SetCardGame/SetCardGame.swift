@@ -12,12 +12,13 @@ struct SetCardGame {
     private(set) var selectedCards: [Card] = []
     private(set) var cardsOnDisplay: [Card]
     private(set) var isMatch = false
+    private(set) var discardedCards: [Card] = []
     
     mutating func drawThreeMoreCards() {
         if deck.count < 3 { return }
         
         if (isMatch) {
-            respondToMatch()
+            respondToMatch(replace: true)
             return;
         }
         
@@ -31,7 +32,7 @@ struct SetCardGame {
         deck.removeFirst(3)
     }
     
-    mutating func respondToMatch() {
+    mutating func respondToMatch(replace: Bool = false) {
         isMatch = false
         
             for i in 0..<3 {
@@ -41,8 +42,16 @@ struct SetCardGame {
                     var newCard = deck.removeFirst()
                     newCard.isFaceUp = true
                     
-                    cardsOnDisplay[matchingCardIndex ?? 0] = newCard
+                    if replace {
+                        discardedCards.append(selectedCards[i])
+                        
+                        cardsOnDisplay[matchingCardIndex ?? 0] = newCard
+                    }
+                    else {
+                        discardedCards.append(selectedCards[i])
+                    }
                 } else {
+                    discardedCards.append(selectedCards[i])
                     cardsOnDisplay.remove(at: matchingCardIndex ?? 0)
                 }
             }

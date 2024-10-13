@@ -16,6 +16,11 @@ import SwiftUI
     var selectedCards: [SetCardGame.Card] {
         return model.selectedCards
     }
+    
+    var discardedCards: [SetCardGame.Card] {
+        return model.discardedCards
+    }
+    
     var isMatch: Bool {
         return model.isMatch
     }

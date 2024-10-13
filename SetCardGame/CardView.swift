@@ -10,29 +10,44 @@ import SwiftUI
 struct CardView: View {
     private var viewModel: SetCardGameViewModel
     private let card: SetCardGame.Card
+    private let isSelected: Bool
+    
     
     var body: some View {
-        let isSelected = viewModel.selectedCards.contains(card)
-        
         ZStack {
             RoundedRectangle(cornerRadius: 14)
                 .foregroundColor(.white)
                 .shadow(radius: 2)
-            CardContent(card)
-                .padding()
+            if card.isFaceUp {
+                CardContent(card)
+                    .padding()
+            } else {
+                RoundedRectangle(cornerRadius: 14)
+                    .foregroundStyle(.orange)
+            }
         }
         .overlay(content: {
             isSelected ? RoundedRectangle(cornerRadius: 14).foregroundStyle(.yellow).opacity(0.15) : nil
         })
         .scaleEffect(isSelected ? 0.9 : 1)
-        .background(isSelected && viewModel.selectedCards.count == 3 ? RoundedRectangle(cornerRadius: 8)
-            .foregroundStyle(viewModel.isMatch ? .green : .red): nil)
-        .animation(.easeIn(duration: 0.1), value: isSelected)
+        .background(matchEffect)
+        .rotation3DEffect(.degrees(card.isFaceUp ? 180 : 0), axis: (0,1,0))    }
+    
+    @ViewBuilder
+    private var matchEffect: some View {
+        isSelected && viewModel.selectedCards.count == 3 ? RoundedRectangle(cornerRadius: 8)
+            .foregroundStyle(viewModel.isMatch ? .green : .red): nil
+    }
+    
+    @ViewBuilder
+    private var selectionEffect: some View {
+        isSelected ? RoundedRectangle(cornerRadius: 14).foregroundStyle(.yellow).opacity(0.15) : nil
     }
     
     init(_ card: SetCardGame.Card, viewModel: SetCardGameViewModel) {
         self.card = card
         self.viewModel = viewModel
+        self.isSelected = viewModel.selectedCards.contains(card)
     }
 }
 

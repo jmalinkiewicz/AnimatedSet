@@ -21,7 +21,13 @@ struct SetCardGame {
             return;
         }
         
-        cardsOnDisplay.append(contentsOf: deck.prefix(3))
+        var cardsToAdd = Array(deck.prefix(3))
+        for index in 0..<cardsToAdd.count {
+            cardsToAdd[index].isFaceUp = true
+        }
+    
+        cardsOnDisplay.append(contentsOf: cardsToAdd)
+
         deck.removeFirst(3)
     }
     
@@ -32,8 +38,10 @@ struct SetCardGame {
                 let matchingCardIndex = cardsOnDisplay.firstIndex(of: selectedCards[i])
                 
                 if deck.count >= 3 {
-                    cardsOnDisplay[matchingCardIndex ?? 0] = deck[i]
-                    deck.removeFirst()
+                    var newCard = deck.removeFirst()
+                    newCard.isFaceUp = true
+                    
+                    cardsOnDisplay[matchingCardIndex ?? 0] = newCard
                 } else {
                     cardsOnDisplay.remove(at: matchingCardIndex ?? 0)
                 }
@@ -88,6 +96,7 @@ struct SetCardGame {
         let color: Color
         let shade: Shade
         let numberOfShapes: NumberOfShapes
+        var isFaceUp = false
         
         enum Shape: CaseIterable {
             case diamond, squiggle, oval
@@ -125,8 +134,13 @@ struct SetCardGame {
             return deck.shuffled()
         }
         
+        
         self.deck = makeDeckOfCards()
-        self.cardsOnDisplay = Array(self.deck.prefix(12))
+        var initialCards = Array(self.deck.prefix(12))
+        for index in 0..<initialCards.count {
+            initialCards[index].isFaceUp = true
+        }
+        self.cardsOnDisplay = initialCards
         self.deck.removeFirst(12)
     }
 }

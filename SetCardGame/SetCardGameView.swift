@@ -11,6 +11,13 @@ struct SetCardGameView: View {
     @Environment(SetCardGameViewModel.self) private var viewModel
     
     var body: some View {
+        cards
+        .padding()
+        controls
+        .padding(.horizontal, 20)
+    }
+    
+    var cards: some View {
         AspectVGrid(viewModel.cardsOnDisplay, aspectRatio: 2/3) { card in
             CardView(card, viewModel: viewModel)
                 .shadow(radius: 2)
@@ -19,7 +26,9 @@ struct SetCardGameView: View {
                     viewModel.select(card)
                 }
         }
-        .padding()
+    }
+    
+    var controls: some View {
         HStack {
             ZStack {
                 ForEach(viewModel.discardedCards, content: { card in
@@ -46,7 +55,6 @@ struct SetCardGameView: View {
             .rotationEffect(.degrees(-9))
             .shadow(radius: 2)
         }
-        .padding(.horizontal, 20)
     }
 }
 

@@ -16,21 +16,22 @@ struct CardView: View {
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 14)
-                .foregroundColor(.white)
-            if card.isFaceUp {
+                .foregroundColor(Color(red: 0.9, green: 0.9, blue: 1))
+//            if card.isFaceUp {
                 CardContent(card)
                     .padding()
-            } else {
-                RoundedRectangle(cornerRadius: 14)
-                    .foregroundStyle(.orange)
-            }
+//            } else {
+//                RoundedRectangle(cornerRadius: 14)
+//                    .foregroundStyle(.orange)
+//            }
         }
         .overlay(content: {
             isSelected ? RoundedRectangle(cornerRadius: 14).foregroundStyle(.yellow).opacity(0.15) : nil
         })
         .scaleEffect(isSelected ? 0.9 : 1)
         .background(matchEffect)
-        .rotation3DEffect(.degrees(card.isFaceUp ? 180 : 0), axis: (0,1,0))    }
+//      .rotation3DEffect(.degrees(card.isFaceUp ? 180 : 0), axis: (0,1,0))
+    }
     
     @ViewBuilder
     private var matchEffect: some View {

@@ -9,51 +9,62 @@ import SwiftUI
 
 struct SetCardGameView: View {
     @Environment(SetCardGameViewModel.self) private var viewModel
+    @Namespace private var deckNamespace
     
     var body: some View {
-        cards
-        .padding()
-        controls
-        .padding(.horizontal, 20)
+        ZStack {
+            cards
+                .padding(.horizontal)
+            VStack {
+                Spacer()
+                controls
+                .padding(.horizontal, 20)
+            }
+        }
     }
     
     var cards: some View {
         AspectVGrid(viewModel.cardsOnDisplay, aspectRatio: 2/3) { card in
             CardView(card, viewModel: viewModel)
-                .shadow(radius: 2)
                 .padding(2)
                 .onTapGesture {
                     viewModel.select(card)
                 }
+                .matchedGeometryEffect(id: card.id, in: deckNamespace)
+                .transition(.asymmetric(insertion: .identity, removal: .identity))
         }
     }
     
     var controls: some View {
-        HStack {
+        HStack(alignment: .top) {
             ZStack {
                 ForEach(viewModel.discardedCards, content: { card in
                     CardView(card, viewModel: viewModel)
                 })
             }
             .frame(width: 100 * 2/3, height: 100)
-            .rotationEffect(.degrees(9))
-            .shadow(radius: 2)
             Spacer()
-            Button("New Game") {
-                viewModel.newGame()
-            }
+                Button("New Game") {
+                    viewModel.newGame()
+                }
+                .padding(14)
+                .background(RoundedRectangle(cornerRadius: 32).foregroundStyle(.white))
+                .shadow(radius: 2)
+                .alignmentGuide(.top) { _ in -50}
             Spacer()
             ZStack {
-                ForEach(viewModel.deck, content: { card in
+                ForEach(viewModel.deck.reversed(), content: { card in
                     CardView(card, viewModel: viewModel)
+                        .matchedGeometryEffect(id: card.id, in: deckNamespace)
+                        .transition(.asymmetric(insertion: .identity, removal: .identity))
                 })
             }
             .onTapGesture {
-                viewModel.drawThreeMoreCards()
+                withAnimation(.easeInOut(duration: 4)) {
+                    viewModel.drawThreeMoreCards()
+                }
             }
             .frame(width: 100 * 2/3, height: 100)
-            .rotationEffect(.degrees(-9))
-            .shadow(radius: 2)
         }
     }
 }

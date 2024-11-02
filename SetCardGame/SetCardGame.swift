@@ -49,6 +49,7 @@ struct SetCardGame {
                     }
                     else {
                         discardedCards.append(selectedCards[i])
+                        cardsOnDisplay.remove(at: matchingCardIndex ?? 0)
                     }
                 } else {
                     discardedCards.append(selectedCards[i])

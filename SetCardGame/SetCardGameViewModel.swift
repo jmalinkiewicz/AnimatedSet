@@ -37,8 +37,8 @@ import SwiftUI
         model.newGame()
     }
     
-    func drawThreeMoreCards() {
-        model.drawThreeMoreCards()
+    func drawCard() {
+        model.drawCard()
     }
     
 }

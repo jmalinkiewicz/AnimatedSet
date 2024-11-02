@@ -14,22 +14,22 @@ struct SetCardGame {
     private(set) var isMatch = false
     private(set) var discardedCards: [Card] = []
     
-    mutating func drawThreeMoreCards() {
-        if deck.count < 3 { return }
+    mutating func drawCard() {
+        if deck.count < 1 { return }
         
         if (isMatch) {
             respondToMatch(replace: true)
             return;
         }
         
-        var cardsToAdd = Array(deck.prefix(3))
+        var cardsToAdd = Array(deck.prefix(1))
         for index in 0..<cardsToAdd.count {
             cardsToAdd[index].isFaceUp = true
         }
     
         cardsOnDisplay.append(contentsOf: cardsToAdd)
 
-        deck.removeFirst(3)
+        deck.removeFirst(1)
     }
     
     mutating func respondToMatch(replace: Bool = false) {

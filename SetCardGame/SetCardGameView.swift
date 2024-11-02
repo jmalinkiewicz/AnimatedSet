@@ -60,8 +60,14 @@ struct SetCardGameView: View {
                 })
             }
             .onTapGesture {
-                withAnimation(.easeInOut(duration: 4)) {
-                    viewModel.drawThreeMoreCards()
+                var delay: TimeInterval = 0
+                
+                for _ in 0..<3 {
+                    withAnimation(.easeInOut(duration: 1).delay(delay)) {
+                        viewModel.drawCard()
+                    }
+                    
+                    delay += 0.25
                 }
             }
             .frame(width: 100 * 2/3, height: 100)

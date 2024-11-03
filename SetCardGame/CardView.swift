@@ -7,30 +7,39 @@
 
 import SwiftUI
 
-struct CardView: View {
+struct CardView: View, Animatable {
     private var viewModel: SetCardGameViewModel
     private let card: SetCardGame.Card
     private let isSelected: Bool
+    private var isFaceUp: Bool {
+        rotation > 90
+    }
     
+    
+    var rotation: Double
+    var animatableData: Double {
+        get { rotation }
+        set { rotation = newValue }
+    }
     
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 14)
                 .foregroundColor(Color(red: 0.9, green: 0.9, blue: 1))
-//            if card.isFaceUp {
+            if isFaceUp {
                 CardContent(card)
                     .padding()
-//            } else {
-//                RoundedRectangle(cornerRadius: 14)
-//                    .foregroundStyle(.orange)
-//            }
+            } else {
+                RoundedRectangle(cornerRadius: 14)
+                    .foregroundStyle(.orange)
+            }
         }
+        .rotation3DEffect(.degrees(rotation), axis: (0,1,0))
         .overlay(content: {
             isSelected ? RoundedRectangle(cornerRadius: 14).foregroundStyle(.yellow).opacity(0.15) : nil
         })
         .scaleEffect(isSelected ? 0.9 : 1)
         .background(matchEffect)
-//      .rotation3DEffect(.degrees(card.isFaceUp ? 180 : 0), axis: (0,1,0))
     }
     
     @ViewBuilder
@@ -45,6 +54,7 @@ struct CardView: View {
     }
     
     init(_ card: SetCardGame.Card, viewModel: SetCardGameViewModel) {
+        self.rotation = card.isFaceUp ? 180 : 0
         self.card = card
         self.viewModel = viewModel
         self.isSelected = viewModel.selectedCards.contains(card)

@@ -28,7 +28,9 @@ struct SetCardGameView: View {
             CardView(card, viewModel: viewModel)
                 .padding(2)
                 .onTapGesture {
-                    viewModel.select(card)
+                    withAnimation {
+                        viewModel.select(card)
+                    }
                 }
                 .matchedGeometryEffect(id: card.id, in: deckNamespace)
                 .transition(.asymmetric(insertion: .identity, removal: .identity))
@@ -66,7 +68,7 @@ struct SetCardGameView: View {
                     withAnimation(.easeInOut(duration: 1).delay(delay)) {
                         viewModel.drawCard()
                     }
-                    
+                    viewModel.flipLastCardFaceUp(delay: .now() + 1.2 + delay)
                     delay += 0.25
                 }
             }

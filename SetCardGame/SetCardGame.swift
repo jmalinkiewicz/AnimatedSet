@@ -22,10 +22,7 @@ struct SetCardGame {
             return;
         }
         
-        var cardsToAdd = Array(deck.prefix(1))
-        for index in 0..<cardsToAdd.count {
-            cardsToAdd[index].isFaceUp = true
-        }
+        let cardsToAdd = Array(deck.prefix(1))
     
         cardsOnDisplay.append(contentsOf: cardsToAdd)
 
@@ -124,6 +121,15 @@ struct SetCardGame {
         enum NumberOfShapes: Int, CaseIterable {
             case one = 1, two, three
         }
+    }
+    
+    mutating func flipCardFaceUp(at index: Int) {
+        guard cardsOnDisplay.indices.contains(index) else {
+            print("Error: Index \(index) is out of range for cardsOnDisplay.")
+            return
+        }
+        
+        cardsOnDisplay[index].isFaceUp = true
     }
 
     

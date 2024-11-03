@@ -41,4 +41,14 @@ import SwiftUI
         model.drawCard()
     }
     
+    func flipLastCardFaceUp(delay: DispatchTime) {
+        let lastCardIndex = cardsOnDisplay.indices.last ?? 0
+        
+        DispatchQueue.main.asyncAfter(deadline: delay, execute: {
+            withAnimation(.easeInOut(duration: 1)) {
+                self.model.flipCardFaceUp(at: lastCardIndex)
+            }
+        })
+    }
+    
 }

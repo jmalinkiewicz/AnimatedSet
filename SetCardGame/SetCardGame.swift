@@ -81,8 +81,15 @@ struct SetCardGame {
         
     }
     
-    mutating func newGame() {
-        self = SetCardGame()
+    mutating func moveCardsToDeck() {
+        deck.append(contentsOf: cardsOnDisplay)
+        cardsOnDisplay.removeAll()
+    }
+    
+    mutating func turnAllDisplayedCardsFaceDown() {
+        for index in cardsOnDisplay.indices {
+            cardsOnDisplay[index].isFaceUp = false
+        }
     }
     
     func checkForSet(_ cardOne: Card, _ cardTwo: Card, _ cardThree: Card) -> Bool {
@@ -131,7 +138,6 @@ struct SetCardGame {
         
         cardsOnDisplay[index].isFaceUp = true
     }
-
     
     init() {
         func makeDeckOfCards() -> [Card] {

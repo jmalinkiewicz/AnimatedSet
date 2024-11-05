@@ -34,21 +34,24 @@ import SwiftUI
     }
     
     func newGame() {
-        model.newGame()
+        model.turnAllDisplayedCardsFaceDown()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            withAnimation(.easeInOut(duration: 1)) {
+                self.model.moveCardsToDeck()
+            }
+        }
     }
     
     func drawCard() {
         model.drawCard()
     }
     
-    func flipLastCardFaceUp(delay: DispatchTime) {
+    func flipLastCardFaceUp(delay: TimeInterval) {
         let lastCardIndex = cardsOnDisplay.indices.last ?? 0
         
-        DispatchQueue.main.asyncAfter(deadline: delay, execute: {
-            withAnimation(.easeInOut(duration: 1)) {
-                self.model.flipCardFaceUp(at: lastCardIndex)
-            }
-        })
+        withAnimation(.easeInOut(duration: 1).delay(delay)) {
+            self.model.flipCardFaceUp(at: lastCardIndex)
+        }
     }
-    
 }

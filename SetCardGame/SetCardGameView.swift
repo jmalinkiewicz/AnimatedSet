@@ -47,7 +47,9 @@ struct SetCardGameView: View {
             .frame(width: 100 * 2/3, height: 100)
             Spacer()
                 Button("New Game") {
-                    viewModel.newGame()
+                    withAnimation(.easeInOut(duration: 1)) {
+                        viewModel.newGame()
+                    }
                 }
                 .padding(14)
                 .background(RoundedRectangle(cornerRadius: 32).foregroundStyle(.white))
@@ -55,10 +57,11 @@ struct SetCardGameView: View {
                 .alignmentGuide(.top) { _ in -50}
             Spacer()
             ZStack {
-                ForEach(viewModel.deck.reversed(), content: { card in
+                ForEach(viewModel.deck, content: { card in
                     CardView(card, viewModel: viewModel)
                         .matchedGeometryEffect(id: card.id, in: deckNamespace)
                         .transition(.asymmetric(insertion: .identity, removal: .identity))
+                    
                 })
             }
             .onTapGesture {
@@ -68,7 +71,7 @@ struct SetCardGameView: View {
                     withAnimation(.easeInOut(duration: 1).delay(delay)) {
                         viewModel.drawCard()
                     }
-                    viewModel.flipLastCardFaceUp(delay: .now() + 1.2 + delay)
+                    viewModel.flipLastCardFaceUp(delay: delay + 1)
                     delay += 0.25
                 }
             }

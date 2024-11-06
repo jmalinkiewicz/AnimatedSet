@@ -92,6 +92,10 @@ struct SetCardGame {
         }
     }
     
+    mutating func shuffleDeck() {
+        deck.shuffle()
+    }
+    
     func checkForSet(_ cardOne: Card, _ cardTwo: Card, _ cardThree: Card) -> Bool {
         func allSameOrAllDifferent<T: Equatable>(_ a: T, _ b: T, _ c: T) -> Bool {
             return (a == b && b == c) || (a != b && a != c && b != c)

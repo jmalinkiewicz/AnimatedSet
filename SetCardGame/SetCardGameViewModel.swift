@@ -41,6 +41,8 @@ import SwiftUI
                 self.model.moveCardsToDeck()
             }
         }
+        
+        model.shuffleDeck()
     }
     
     func drawCard() {

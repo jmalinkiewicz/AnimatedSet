@@ -32,6 +32,7 @@ struct CardView: View, Animatable {
             } else {
                 RoundedRectangle(cornerRadius: 14)
                     .foregroundStyle(.orange)
+                    .padding()
             }
         }
         .rotation3DEffect(.degrees(rotation), axis: (0,1,0))

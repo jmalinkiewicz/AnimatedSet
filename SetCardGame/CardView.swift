@@ -40,6 +40,7 @@ struct CardView: View, Animatable {
         })
         .scaleEffect(isSelected ? 0.9 : 1)
         .background(matchEffect)
+        .padding(2)
     }
     
     @ViewBuilder

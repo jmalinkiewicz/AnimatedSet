@@ -21,10 +21,8 @@ struct SetCardGame {
             respondToMatch(replace: true)
             return;
         }
-        
-        let cardsToAdd = Array(deck.prefix(1))
     
-        cardsOnDisplay.append(contentsOf: cardsToAdd)
+        cardsOnDisplay.append(deck[0])
 
         deck.removeFirst(1)
     }
@@ -86,16 +84,18 @@ struct SetCardGame {
         cardsOnDisplay.removeAll()
     }
     
-    mutating func turnAllDisplayedCardsFaceDown() {
-        for index in cardsOnDisplay.indices {
-            cardsOnDisplay[index].isFaceUp = false
+    mutating func turnAllCardsFaceDown() {
+        for index in deck.indices {
+            deck[index].isFaceUp = false
         }
     }
     
-    mutating func shuffleDeck() {
-        deck.shuffle()
+    mutating func turnAllDisplayedCardsFaceUp() {
+        for index in cardsOnDisplay.indices {
+            cardsOnDisplay[index].isFaceUp = true
+        }
     }
-    
+
     func checkForSet(_ cardOne: Card, _ cardTwo: Card, _ cardThree: Card) -> Bool {
         func allSameOrAllDifferent<T: Equatable>(_ a: T, _ b: T, _ c: T) -> Bool {
             return (a == b && b == c) || (a != b && a != c && b != c)

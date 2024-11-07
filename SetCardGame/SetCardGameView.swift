@@ -26,7 +26,6 @@ struct SetCardGameView: View {
     var cards: some View {
         AspectVGrid(viewModel.cardsOnDisplay, aspectRatio: 2/3) { card in
             CardView(card, viewModel: viewModel)
-                .padding(2)
                 .onTapGesture {
                     withAnimation {
                         viewModel.select(card)
@@ -47,8 +46,22 @@ struct SetCardGameView: View {
             .frame(width: 100 * 2/3, height: 100)
             Spacer()
                 Button("New Game") {
-                    withAnimation(.easeInOut(duration: 1)) {
-                        viewModel.newGame()
+                    var delay = 0.1
+                    
+                    withAnimation(.easeInOut(duration: 1).delay(1.5)) {
+                        viewModel.moveCardsToDeck()
+                    }
+                    withAnimation(.easeInOut(duration: 1).delay(0)) {
+                        viewModel.turnAllCardsFaceDown()
+                    }
+                    for _ in 1...12 {
+                        withAnimation(.easeInOut(duration: 1).delay(3 + delay)) {
+                            viewModel.drawCard()
+                        }
+                        delay += 0.25
+                    }
+                    withAnimation(.easeInOut(duration: 1).delay(3.5 + delay)) {
+                        viewModel.turnAllDisplayedCardsFaceUp()
                     }
                 }
                 .padding(14)
@@ -57,7 +70,7 @@ struct SetCardGameView: View {
                 .alignmentGuide(.top) { _ in -50}
             Spacer()
             ZStack {
-                ForEach(viewModel.deck, content: { card in
+                ForEach(viewModel.deck.reversed(), content: { card in
                     CardView(card, viewModel: viewModel)
                         .matchedGeometryEffect(id: card.id, in: deckNamespace)
                         .transition(.asymmetric(insertion: .identity, removal: .identity))

@@ -33,16 +33,16 @@ import SwiftUI
         model.select(card)
     }
     
-    func newGame() {
-        model.turnAllDisplayedCardsFaceDown()
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            withAnimation(.easeInOut(duration: 1)) {
-                self.model.moveCardsToDeck()
-            }
-        }
-        
-        model.shuffleDeck()
+    func turnAllCardsFaceDown() {
+        model.turnAllCardsFaceDown()
+    }
+    
+    func turnAllDisplayedCardsFaceUp() {
+        model.turnAllDisplayedCardsFaceUp()
+    }
+    
+    func moveCardsToDeck() {
+        model.moveCardsToDeck()
     }
     
     func drawCard() {
